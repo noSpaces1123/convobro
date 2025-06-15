@@ -27,7 +27,7 @@
 -- OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 -- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-local convobro = { version = "1.0" }
+local convobro = { version = "1.1" }
 
 
 
@@ -194,6 +194,7 @@ end
 --Moves to the next dialogue in the list. If boolean `quickReveal` is true, if dialogue from `dialogueList` is currently playing, the rest of the dialogue will be instantly revealed. This function will need to be called again to move onto the next dialogue in the list.
 function convobro.advanceDialogueList(dialogueList, quickReveal)
     local dialogueObject = dialogueList.dialogue[dialogueList.index]
+    if not dialogueObject then return "fail" end
     if quickReveal and dialogueObject.running then -- quick reveal
         dialogueList.onHold = true
 
